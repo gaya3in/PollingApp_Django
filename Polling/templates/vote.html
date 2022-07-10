@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-lg-12 form-group">
+   {{poll.question}}
+  <br>
+  <hr>
+ <form method="POST">
+        {% csrf_token %}
+     <div style="margin-bottom: 10px;" class="col-lg-8">
+          <span>
+              <input type="radio" name="poll" value="option_1">{{poll.option_1}}</input>
+          </span><br>
+          <span>
+              <input type="radio" name="poll" value="option_2">{{poll.option_2}}</input>
+          </span><br>
+        <span>
+              <input type="radio" name="poll" value="option_3">{{poll.option_3}}</input>
+          </span><br>
+        <span>
+              <input type="radio" name="poll" value="option_4">{{poll.option_4}}</input>
+          </span><br>
+        </div>
+        <button style="margin-bottom: 5px;" class="btn btn-primary" type="submit">Submit</button>
+
+       {% for message in messages %}
+           <p>{{message}}</p>
+       {% endfor %}
+
+ </form>
+</div>
+{% endblock %}

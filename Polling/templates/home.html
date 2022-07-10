@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+     <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 style="display:inline; margin:250px;" class="panel-title">Available Polls</h3>
+                    <a style="float:right; display:inline-block;" class="btn btn-info" href="{% url 'create' %}">Create Poll</a>
+                </div>
+                <br><br><br>
+                  {% for poll in polls %}
+                     <ul class="list-group list-group-small">
+                         <li class="list-group-item list-group-item-primary">
+                             {{poll.question}}
+                             <span class="float-right">
+                                 <a class="btn btn-primary" href="{%url 'vote' poll.id %}">Vote</a>
+                                 <a class="btn btn-success" href="{%url 'results' poll.id %}">View Results</a>
+                             </span>
+                         </li>
+                     </ul>
+                     {% endfor %}
+
+            </div>
+        </div>
+     </div>
+</div>
+<script>
+     {% for message in messages %}
+            alert("{{message}}")
+     {% endfor %}
+</script>
+{% endblock %}
+

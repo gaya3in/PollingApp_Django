@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+   <div class="box-element">
+                <a class="btn btn-outline-secondary" href="{% url 'home' %}">&#x2190; Go back</a>
+                <br>
+                <br>
+                <table class="table">
+                    <tr>
+                        <th><h5>Name:</h5><strong>{{profile.name}}</strong> </th>
+                        <th><h5>Email:</h5><strong>{{profile.email}}</strong> </th>
+                        <th><h5>Phone:</h5><strong>{{profile.phone}}</strong> </th>
+                    </tr>
+                </table>
+            </div>
+<br><br>
+         <h4 style="text-align:center;">Polls Created by {{request.user}}</h4>
+{% for poll in polls %}
+
+                     <ul class="list-group list-group-small">
+                         <li class="list-group-item list-group-item-primary">
+                             {{poll.question}}
+                             <span class="float-right">
+                                <!-- <a class="btn btn-primary" href="{%url 'vote' poll.id %}">Vote</a> -->
+                                 <a class="btn btn-success" href="{%url 'results' poll.id %}">View Results</a>
+                             </span>
+                         </li>
+                     </ul>
+                     {% endfor %}
+{% endblock %}

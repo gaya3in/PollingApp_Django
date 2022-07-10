@@ -1,0 +1,23 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-lg-12 form-group">
+   {{poll.question}}
+<br><hr>
+  <span>
+      <label class="form-control">{{poll.option_1}} - {{poll.option_1_votes}} votes</label>
+  </span>
+  <span>
+      <label class="form-control">{{poll.option_2}} - {{poll.option_2_votes}} votes</label>
+  </span>
+<span>
+      <label class="form-control">{{poll.option_3}} - {{poll.option_3_votes}} votes</label>
+</span>
+<span>
+      <label class="form-control">{{poll.option_4}} - {{poll.option_4_votes}} votes</label>
+  </span>
+<a style="margin-bottom: 5px;" href="{% url 'home' %}" class="btn btn-primary">Home</a>
+    <br>
+    </div>
+{% endblock %}
